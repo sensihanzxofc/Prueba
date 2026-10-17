@@ -205,6 +205,121 @@ footer {
     text-align: center;
     letter-spacing: 1.5px;
 }
+
+/* PANTALLA DE MANTENIMIENTO */
+#pantallaMantenimiento {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+    background: rgba(0,5,9,.96);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+#pantallaMantenimiento.activo {
+    display: flex;
+}
+
+.aviso-mantenimiento {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    padding: 28px 20px;
+    overflow: hidden;
+    text-align: center;
+    border: 2px solid #00f7ff;
+    border-radius: 20px;
+    background: rgba(8,14,19,.98);
+    box-shadow:
+        0 0 18px rgba(0,247,255,.35),
+        inset 0 0 24px rgba(0,247,255,.04);
+    animation:
+        entradaAviso .55s ease-out,
+        brilloAviso 2s ease-in-out infinite alternate;
+}
+
+.aviso-mantenimiento::before,
+.aviso-mantenimiento::after {
+    content: "";
+    position: absolute;
+    width: 65px;
+    height: 2px;
+    background: #00f7ff;
+    box-shadow: 0 0 10px #00f7ff;
+}
+
+.aviso-mantenimiento::before {
+    top: 14px;
+    left: 15px;
+}
+
+.aviso-mantenimiento::after {
+    bottom: 14px;
+    right: 15px;
+}
+
+.icono-seguridad {
+    color: #00f7ff;
+    font-size: 36px;
+    line-height: 1;
+    margin-bottom: 18px;
+    text-shadow: 0 0 14px rgba(0,247,255,.6);
+    animation: pulsoIcono 1.8s ease-in-out infinite;
+}
+
+.titulo-mantenimiento {
+    margin: 0 0 15px;
+    color: #00f7ff;
+    font-size: clamp(21px, 5vw, 34px);
+    font-weight: 900;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+    text-shadow: 0 0 15px rgba(0,247,255,.4);
+}
+
+.texto-mantenimiento {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(16px, 4vw, 23px);
+    font-weight: 900;
+    letter-spacing: .5px;
+}
+
+@keyframes entradaAviso {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes brilloAviso {
+    from {
+        box-shadow: 0 0 14px rgba(0,247,255,.25);
+    }
+    to {
+        box-shadow: 0 0 30px rgba(0,247,255,.6);
+    }
+}
+
+@keyframes pulsoIcono {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .aviso-mantenimiento,
+    .icono-seguridad {
+        animation: none;
+    }
+}
 </style>
 </head>
 
@@ -222,39 +337,67 @@ footer {
     SENSI HANZX • CENTRO DE DESCARGAS
 </footer>
 
+<!-- AVISO FLOTANTE -->
+<section id="pantallaMantenimiento" role="alert" aria-live="assertive">
+    <div class="aviso-mantenimiento">
+        <div class="icono-seguridad" aria-hidden="true">⛨</div>
+        <h1 class="titulo-mantenimiento">
+            ¡PÁGINA EN MANTENIMIENTO!
+        </h1>
+        <p class="texto-mantenimiento">
+            VOLVEMOS EN BREVE
+        </p>
+    </div>
+</section>
+
 <script>
+
+/* =========================================
+   CONFIGURACIÓN DE MANTENIMIENTO
+
+   true  = ACTIVADO
+   false = DESACTIVADO
+   ========================================= */
+
+const mantenimiento = false;
+
+
+/* =========================================
+   LISTA DE ARCHIVOS
+   ========================================= */
+
 const archivos = [
 
     {
         titulo: "PROXY MTH TEAM",
-        estado: "mantenimiento",
-        aviso: "ESPEREN BROUS, SE ESTÁ ACTUALIZANDO EL LINK A MEDIAFIRE.",
+        estado: "disponible",
+        aviso: "ultima version de PROXY MTH TEAM actualizada.",
         dispositivo: "ANDROID",
         fecha: "16/10/2026",
         key: "Genera tu key free",
 
-        enlaceDescarga: "mediafire.com",
+        enlaceDescarga: "https://www.mediafire.com/file/bhvavgwtgh2nvxj/Nexa-Play-v30.0.0-FuckingCopiers.apk/file",
         enlaceKey: "https://mthteam.com/getkey",
         enlaceCopy: ""
     },
 
     {
         titulo: "CUBAN MODS APK",
-        estado: "parchado",
-        aviso: "NO USAR PARCHADO.",
+        estado: "disponible",
+        aviso: "Actualizado a su última versión.",
         dispositivo: "ANDROID",
-        fecha: "16/10/2026",
-        key: "CUBAN-79F144796D22B552",
+        fecha: "17/10/2026",
+        key: "Genera tu key",
 
-        enlaceDescarga: "https://www.mediafire.com/file/djdsxn2zslfwdqc/Cuban-Mods-15.0.149-tele.apks/file",
+        enlaceDescarga: "https://www.mediafire.com/file/gzq7uda33slv7h0/Cuban-Mods-v16-prod.apks/file",
         enlaceKey: "https://cubanmods.com/keygratis",
-        enlaceCopy: "CUBAN-79F144796D22B552"
+        enlaceCopy: ""
     },
 
     {
         titulo: "HOLOGRAMA GRATIS",
         estado: "disponible",
-        aviso: "Revisa las instrucciones antes de instalar.",
+        aviso: "Descarga todos los aspectos de ropa y arma pega en data.",
         dispositivo: "ANDROID",
         fecha: "16/10/2026",
         key: "KRISSGAMERV1",
@@ -262,11 +405,54 @@ const archivos = [
         enlaceDescarga: "https://www.mediafire.com/file/yc6njnaqg57pw5g/HOLO_VIP_FF_NORMAL_DE_PLAY_STORE_100%2525_SEGURO_%25F0%2592%25BC%25F0%259F%25A4%258D.zip/file",
         enlaceKey: "",
         enlaceCopy: "KRISSGAMERV1"
+    },
+
+    {
+        titulo: "8 BALL POOL MOD",
+        estado: "disponible",
+        aviso: "8 BALL POOL MOD - By Lito H4cks",
+        dispositivo: "ANDROID",
+        fecha: "16/10/2026",
+        key: "8BP-462A3E4E3CB654F4",
+
+        enlaceDescarga: "https://www.mediafire.com/file/n13bmsvy53dbh40/8+Ball+Pool_56.29.1.apk/file",
+        enlaceKey: "",
+        enlaceCopy: "8BP-462A3E4E3CB654F4"
+    },
+
+    {
+        titulo: "BB RACING MOD",
+        estado: "disponible",
+        aviso: "ModApk compra todo sin gastar un solo centavo.",
+        dispositivo: "ANDROID",
+        fecha: "16/10/2026",
+        key: "NO TIENE",
+
+        enlaceDescarga: "https://www.mediafire.com/file/6uo9dv7m2pirkbn/AloneZoneMod.apk/file",
+        enlaceKey: "",
+        enlaceCopy: ""
     }
 
 ];
 
+
+/* =========================================
+   ACTIVAR O DESACTIVAR MANTENIMIENTO
+   ========================================= */
+
 const lista = document.getElementById("lista");
+const pantallaMantenimiento =
+    document.getElementById("pantallaMantenimiento");
+
+if (mantenimiento === true) {
+    pantallaMantenimiento.classList.add("activo");
+    document.body.style.overflow = "hidden";
+}
+
+
+/* =========================================
+   FUNCIONES DE LA PÁGINA
+   ========================================= */
 
 function escapar(texto) {
     return String(texto ?? "").replace(/[&<>"']/g, caracter => ({
@@ -294,43 +480,58 @@ const estados = {
 };
 
 function crearTarjeta(archivo) {
+
     const tarjeta = document.createElement("article");
     tarjeta.className = "card";
 
     const estado = estados[archivo.estado] || estados.disponible;
+
     const titulo = escapar(archivo.titulo);
     const aviso = escapar(archivo.aviso);
     const dispositivo = escapar(archivo.dispositivo);
     const fecha = escapar(archivo.fecha);
     const key = escapar(archivo.key);
     const enlaceDescarga = escapar(archivo.enlaceDescarga);
+
     const enlaceKey = String(archivo.enlaceKey || "").trim();
     const enlaceCopy = String(archivo.enlaceCopy || "").trim();
 
     tarjeta.innerHTML = `
-        <div class="estado ${estado.clase}">${estado.texto}</div>
+        <div class="estado ${estado.clase}">
+            ${estado.texto}
+        </div>
 
         <h2 class="titulo">${titulo}</h2>
 
         <div class="dato">
             <span class="etiqueta">AVISO</span>
-            <div class="valor aviso">${aviso || "Sin aviso."}</div>
+            <div class="valor aviso">
+                ${aviso || "Sin aviso."}
+            </div>
         </div>
 
         <div class="dato">
             <span class="etiqueta">DISPOSITIVO</span>
-            <div class="valor">${dispositivo || "No especificado"}</div>
+            <div class="valor">
+                ${dispositivo || "No especificado"}
+            </div>
         </div>
 
         <div class="dato">
             <span class="etiqueta">FECHA</span>
-            <div class="valor">${fecha || "No especificada"}</div>
+            <div class="valor">
+                ${fecha || "No especificada"}
+            </div>
         </div>
 
         <div class="dato">
             <span class="etiqueta">KEY DE ACCESO</span>
+
             <div class="key-fila">
-                <div class="key-texto">${key || "No especificada"}</div>
+                <div class="key-texto">
+                    ${key || "No especificada"}
+                </div>
+
                 ${
                     enlaceCopy
                     ? `<button class="boton copy" type="button">COPY</button>`
@@ -340,12 +541,15 @@ function crearTarjeta(archivo) {
         </div>
 
         <div class="botones">
+
             ${
                 enlaceDescarga
                 ? `<a class="boton descargar"
                     href="${enlaceDescarga}"
                     target="_blank"
-                    rel="noopener noreferrer">📥 DOWNLOAD</a>`
+                    rel="noopener noreferrer">
+                    📥 DOWNLOAD
+                   </a>`
                 : ""
             }
 
@@ -354,49 +558,80 @@ function crearTarjeta(archivo) {
                 ? `<a class="boton getkey"
                     href="${escapar(enlaceKey)}"
                     target="_blank"
-                    rel="noopener noreferrer">🔑 GET KEY FREE</a>`
+                    rel="noopener noreferrer">
+                    🔑 GET KEY FREE
+                   </a>`
                 : ""
             }
+
         </div>
     `;
 
     const botonCopy = tarjeta.querySelector(".copy");
 
     if (botonCopy) {
+
         botonCopy.addEventListener("click", async () => {
+
             try {
+
                 if (navigator.clipboard && window.isSecureContext) {
+
                     await navigator.clipboard.writeText(enlaceCopy);
+
                 } else {
+
                     const temporal = document.createElement("textarea");
+
                     temporal.value = enlaceCopy;
                     temporal.style.position = "fixed";
                     temporal.style.opacity = "0";
+
                     document.body.appendChild(temporal);
                     temporal.select();
 
                     const copiado = document.execCommand("copy");
+
                     temporal.remove();
 
-                    if (!copiado) throw new Error("No se pudo copiar");
+                    if (!copiado) {
+                        throw new Error("No se pudo copiar");
+                    }
                 }
 
                 botonCopy.textContent = "COPIADO ✓";
-                setTimeout(() => botonCopy.textContent = "COPY", 1500);
+
+                setTimeout(() => {
+                    botonCopy.textContent = "COPY";
+                }, 1500);
+
             } catch (error) {
+
                 botonCopy.textContent = "NO SE PUDO COPIAR";
-                setTimeout(() => botonCopy.textContent = "COPY", 1800);
+
+                setTimeout(() => {
+                    botonCopy.textContent = "COPY";
+                }, 1800);
+
             }
+
         });
+
     }
 
     return tarjeta;
 }
 
+
+/* =========================================
+   MOSTRAR LOS ARCHIVOS
+   ========================================= */
+
 archivos.forEach(archivo => {
     lista.appendChild(crearTarjeta(archivo));
 });
+
 </script>
 
 </body>
-    </html>
+</html>
