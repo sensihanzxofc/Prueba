@@ -7,24 +7,19 @@
 <title>HANZX TEAM • Centro de Descargas</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
-
-:root {
-    color-scheme: dark;
-}
+* { box-sizing: border-box; }
+:root { color-scheme: dark; }
 
 body {
     margin: 0;
     min-height: 100vh;
     padding: 25px 14px;
     font-family: Arial, Helvetica, sans-serif;
-    color: #ffffff;
+    color: #fff;
     background-color: #050709;
     background-image:
-        linear-gradient(rgba(0, 255, 255, .035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 255, .035) 1px, transparent 1px);
+        linear-gradient(rgba(0,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,255,.035) 1px, transparent 1px);
     background-size: 25px 25px;
 }
 
@@ -39,7 +34,7 @@ header {
     font-size: clamp(28px, 7vw, 42px);
     font-weight: 900;
     letter-spacing: 3px;
-    text-shadow: 0 0 18px rgba(0, 247, 255, .45);
+    text-shadow: 0 0 18px rgba(0,247,255,.45);
 }
 
 .subtitle {
@@ -70,10 +65,10 @@ header {
     position: relative;
     overflow: hidden;
     padding: 20px;
-    border: 1px solid rgba(0, 247, 255, .35);
+    border: 1px solid rgba(0,247,255,.35);
     border-radius: 15px;
-    background: rgba(8, 14, 19, .96);
-    box-shadow: 0 0 18px rgba(0, 247, 255, .06);
+    background: rgba(8,14,19,.96);
+    box-shadow: 0 0 18px rgba(0,247,255,.06);
 }
 
 .card::before {
@@ -89,16 +84,19 @@ header {
 .estado {
     display: inline-block;
     margin-bottom: 12px;
-    color: #00f7a5;
     font-size: 10px;
     font-weight: bold;
     letter-spacing: 1.5px;
 }
 
+.estado.disponible { color: #00f7a5; }
+.estado.mantenimiento { color: #ffd43b; }
+.estado.parchado { color: #ff3548; }
+
 .titulo {
     margin: 0 0 18px;
     overflow-wrap: anywhere;
-    color: #ffffff;
+    color: #fff;
     font-size: 21px;
     font-weight: 900;
 }
@@ -138,7 +136,7 @@ header {
 .key-texto {
     flex: 1;
     min-width: 100px;
-    color: #ffffff;
+    color: #fff;
     font-size: 14px;
     font-weight: bold;
     overflow-wrap: anywhere;
@@ -160,7 +158,7 @@ header {
     padding: 12px;
     border: 1px solid transparent;
     border-radius: 8px;
-    color: #ffffff;
+    color: #fff;
     font-size: 12px;
     font-weight: 900;
     letter-spacing: 1px;
@@ -178,7 +176,7 @@ header {
 .descargar {
     color: #001014;
     background: #00f7ff;
-    box-shadow: 0 0 12px rgba(0, 247, 255, .18);
+    box-shadow: 0 0 12px rgba(0,247,255,.18);
 }
 
 .getkey {
@@ -197,9 +195,7 @@ header {
     letter-spacing: .5px;
 }
 
-.aviso {
-    color: #ffcf70;
-}
+.aviso { color: #ffcf70; }
 
 footer {
     max-width: 650px;
@@ -215,7 +211,7 @@ footer {
 <body>
 
 <header>
-    <div class="logo">HANZX TEAM</div>
+    <div class="logo">SENSI HANZX</div>
     <div class="subtitle">CENTRO DE DESCARGAS</div>
     <div class="line"></div>
 </header>
@@ -223,7 +219,7 @@ footer {
 <main id="lista"></main>
 
 <footer>
-    HANZX TEAM • CENTRO OFICIAL DE DESCARGAS
+    SENSI HANZX • CENTRO DE DESCARGAS
 </footer>
 
 <script>
@@ -231,50 +227,40 @@ const archivos = [
 
     {
         titulo: "PROXY MTH TEAM",
-        aviso: "Usa esta aplicación bajo tu responsabilidad.",
+        estado: "mantenimiento",
+        aviso: "ESPEREN BROUS, SE ESTÁ ACTUALIZANDO EL LINK A MEDIAFIRE.",
         dispositivo: "ANDROID",
         fecha: "16/10/2026",
         key: "Genera tu key free",
 
-        enlaceDescarga: "https://www.mediafire.com/file/rc7s5z7j3upo9ty/Nexa-Play-v30.0vexjuego.apk/file",
-
-        // Pon un enlace para mostrar GET KEY FREE.
-        // Déjalo como "" para ocultarlo.
+        enlaceDescarga: "mediafire.com",
         enlaceKey: "https://mthteam.com/getkey",
-
-        // Pon la key para mostrar COPY.
-        // Déjalo como "" para ocultarlo.
         enlaceCopy: ""
     },
 
     {
         titulo: "CUBAN MODS APK",
-        aviso: "NO USAR PARCHADO",
+        estado: "parchado",
+        aviso: "NO USAR PARCHADO.",
         dispositivo: "ANDROID",
         fecha: "16/10/2026",
         key: "CUBAN-79F144796D22B552",
 
         enlaceDescarga: "https://www.mediafire.com/file/djdsxn2zslfwdqc/Cuban-Mods-15.0.149-tele.apks/file",
-
         enlaceKey: "https://cubanmods.com/keygratis",
-
-        // Ejemplo: botón COPY habilitado.
         enlaceCopy: "CUBAN-79F144796D22B552"
     },
 
     {
         titulo: "HOLOGRAMA GRATIS",
+        estado: "disponible",
         aviso: "Revisa las instrucciones antes de instalar.",
         dispositivo: "ANDROID",
         fecha: "16/10/2026",
         key: "KRISSGAMERV1",
 
         enlaceDescarga: "https://www.mediafire.com/file/yc6njnaqg57pw5g/HOLO_VIP_FF_NORMAL_DE_PLAY_STORE_100%2525_SEGURO_%25F0%2592%25BC%25F0%259F%25A4%258D.zip/file",
-
-        // Sin enlace: GET KEY FREE oculto.
         enlaceKey: "",
-
-        // Con key: COPY visible.
         enlaceCopy: "KRISSGAMERV1"
     }
 
@@ -292,22 +278,37 @@ function escapar(texto) {
     })[caracter]);
 }
 
+const estados = {
+    disponible: {
+        texto: "● ARCHIVO DISPONIBLE",
+        clase: "disponible"
+    },
+    mantenimiento: {
+        texto: "● ARCHIVO EN MANTENIMIENTO",
+        clase: "mantenimiento"
+    },
+    parchado: {
+        texto: "● ARCHIVO PARCHADO",
+        clase: "parchado"
+    }
+};
+
 function crearTarjeta(archivo) {
     const tarjeta = document.createElement("article");
     tarjeta.className = "card";
 
+    const estado = estados[archivo.estado] || estados.disponible;
     const titulo = escapar(archivo.titulo);
     const aviso = escapar(archivo.aviso);
     const dispositivo = escapar(archivo.dispositivo);
     const fecha = escapar(archivo.fecha);
     const key = escapar(archivo.key);
-
     const enlaceDescarga = escapar(archivo.enlaceDescarga);
     const enlaceKey = String(archivo.enlaceKey || "").trim();
     const enlaceCopy = String(archivo.enlaceCopy || "").trim();
 
     tarjeta.innerHTML = `
-        <div class="estado">● ARCHIVO DISPONIBLE</div>
+        <div class="estado ${estado.clase}">${estado.texto}</div>
 
         <h2 class="titulo">${titulo}</h2>
 
@@ -328,10 +329,8 @@ function crearTarjeta(archivo) {
 
         <div class="dato">
             <span class="etiqueta">KEY DE ACCESO</span>
-
             <div class="key-fila">
                 <div class="key-texto">${key || "No especificada"}</div>
-
                 ${
                     enlaceCopy
                     ? `<button class="boton copy" type="button">COPY</button>`
@@ -341,21 +340,21 @@ function crearTarjeta(archivo) {
         </div>
 
         <div class="botones">
-            <a
-                class="boton descargar"
-                href="${enlaceDescarga}"
-                target="_blank"
-                rel="noopener noreferrer"
-            >📥 DOWNLOAD</a>
+            ${
+                enlaceDescarga
+                ? `<a class="boton descargar"
+                    href="${enlaceDescarga}"
+                    target="_blank"
+                    rel="noopener noreferrer">📥 DOWNLOAD</a>`
+                : ""
+            }
 
             ${
                 enlaceKey
-                ? `<a
-                    class="boton getkey"
+                ? `<a class="boton getkey"
                     href="${escapar(enlaceKey)}"
                     target="_blank"
-                    rel="noopener noreferrer"
-                >🔑 GET KEY FREE</a>`
+                    rel="noopener noreferrer">🔑 GET KEY FREE</a>`
                 : ""
             }
         </div>
@@ -365,15 +364,12 @@ function crearTarjeta(archivo) {
 
     if (botonCopy) {
         botonCopy.addEventListener("click", async () => {
-            // Copia el contenido de enlaceCopy.
-            const textoCopiar = enlaceCopy;
-
             try {
                 if (navigator.clipboard && window.isSecureContext) {
-                    await navigator.clipboard.writeText(textoCopiar);
+                    await navigator.clipboard.writeText(enlaceCopy);
                 } else {
                     const temporal = document.createElement("textarea");
-                    temporal.value = textoCopiar;
+                    temporal.value = enlaceCopy;
                     temporal.style.position = "fixed";
                     temporal.style.opacity = "0";
                     document.body.appendChild(temporal);
@@ -382,21 +378,14 @@ function crearTarjeta(archivo) {
                     const copiado = document.execCommand("copy");
                     temporal.remove();
 
-                    if (!copiado) {
-                        throw new Error("No se pudo copiar");
-                    }
+                    if (!copiado) throw new Error("No se pudo copiar");
                 }
 
                 botonCopy.textContent = "COPIADO ✓";
-                setTimeout(() => {
-                    botonCopy.textContent = "COPY";
-                }, 1500);
-
+                setTimeout(() => botonCopy.textContent = "COPY", 1500);
             } catch (error) {
                 botonCopy.textContent = "NO SE PUDO COPIAR";
-                setTimeout(() => {
-                    botonCopy.textContent = "COPY";
-                }, 1800);
+                setTimeout(() => botonCopy.textContent = "COPY", 1800);
             }
         });
     }
@@ -410,4 +399,4 @@ archivos.forEach(archivo => {
 </script>
 
 </body>
-  </html>
+    </html>
